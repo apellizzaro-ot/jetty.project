@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.stream.Collectors;
 
 import org.eclipse.jetty.deploy.App;
 import org.eclipse.jetty.deploy.AppProvider;
@@ -34,6 +35,7 @@ import org.eclipse.jetty.deploy.DeploymentManager;
 import org.eclipse.jetty.util.Scanner;
 import org.eclipse.jetty.util.annotation.ManagedAttribute;
 import org.eclipse.jetty.util.annotation.ManagedObject;
+import org.eclipse.jetty.util.annotation.ManagedOperation;
 import org.eclipse.jetty.util.component.AbstractLifeCycle;
 import org.eclipse.jetty.util.log.Log;
 import org.eclipse.jetty.util.log.Logger;
@@ -320,5 +322,16 @@ public abstract class ScanningAppProvider extends AbstractLifeCycle implements A
     public void setScanInterval(int scanInterval)
     {
         _scanInterval = scanInterval;
+    }
+
+    /* ------------------------------------------------------------ */
+    @ManagedOperation("Scan the monitored directories")
+    public void scan()
+    {
+        LOG.info("Performing scan of monitored directories: {}",
+                getMonitoredResources().stream().map((r) -> r.getURI().toASCIIString())
+                        .collect(Collectors.joining(", ", "[", "]"))
+        );
+        _scanner.scan();
     }
 }

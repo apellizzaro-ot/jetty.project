@@ -170,7 +170,6 @@ public class DeploymentManager extends ContainerLifeCycle
                 addBean(provider);
     }
 
-    @ManagedAttribute("Application Providers")
     public Collection<AppProvider> getAppProviders()
     {
         return Collections.unmodifiableList(_providers);
@@ -181,7 +180,7 @@ public class DeploymentManager extends ContainerLifeCycle
         if (isRunning())
             throw new IllegalStateException();
         _providers.add(provider);
-        addBean(provider);        
+        addManaged(provider);
     }
 
     public void setLifeCycleBindings(Collection<AppLifeCycle.Binding> bindings)
@@ -292,7 +291,6 @@ public class DeploymentManager extends ContainerLifeCycle
         return Collections.unmodifiableCollection(_apps);
     }
 
-    @ManagedAttribute("Deployed Apps")
     public Collection<App> getApps()
     {
         List<App> ret = new ArrayList<  >();
