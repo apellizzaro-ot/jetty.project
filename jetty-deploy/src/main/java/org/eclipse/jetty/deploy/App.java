@@ -69,7 +69,7 @@ public class App
         _context = context;
     }
 
-    /* ------------------------------------------------------------ */
+
     /**
      * @return The deployment manager
      */
@@ -78,7 +78,7 @@ public class App
         return _manager;
     }
 
-    /* ------------------------------------------------------------ */
+
     /**
      * @return The AppProvider
      */
@@ -87,7 +87,7 @@ public class App
         return _provider;
     }
 
-    /* ------------------------------------------------------------ */
+
     /**
      * Get ContextHandler for the App.
      * 

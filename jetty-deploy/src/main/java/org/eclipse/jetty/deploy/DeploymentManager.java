@@ -152,7 +152,7 @@ public class DeploymentManager extends ContainerLifeCycle
         }
     }
 
-    /* ------------------------------------------------------------ */
+
     /** Set the AppProviders.
      * The providers passed are added via {@link #addBean(Object)} so that 
      * their lifecycles may be managed as a {@link ContainerLifeCycle}.
