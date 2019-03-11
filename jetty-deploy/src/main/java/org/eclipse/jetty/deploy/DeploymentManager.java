@@ -180,7 +180,7 @@ public class DeploymentManager extends ContainerLifeCycle
         if (isRunning())
             throw new IllegalStateException();
         _providers.add(provider);
-        addManaged(provider);
+        addBean(provider);
     }
 
     public void setLifeCycleBindings(Collection<AppLifeCycle.Binding> bindings)

@@ -34,8 +34,8 @@ public class WebAppProviderMBean extends AbstractHandlerMBean
         super(managedObject);
     }
 
-    @ManagedAttribute("List of monitored resource directories")
-    public List<String> getMonitoredDirectories()
+    @ManagedAttribute("List of monitored resources")
+    public List<String> getMonitoredResources()
     {
         return ((WebAppProvider) _managed).getMonitoredResources().stream()
                 .map((r) -> r.getURI().toASCIIString())
